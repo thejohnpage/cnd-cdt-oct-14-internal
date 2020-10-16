@@ -43,7 +43,6 @@ function getEvents(req, res) {
         });
 };
 
-
 // the backend server will parse json, not a form request
 app.use(bodyParser.json());
 
@@ -73,6 +72,7 @@ app.post('/event', (req, res) => {
         description: req.body.description,
         location: req.body.location,
         likes: 0,
+        dislikes: 0
      }
     firestore.collection("Events").add(ev).then(ret => {
         getEvents(req, res);
